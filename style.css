@@ -1,0 +1,23 @@
+#header{
+
+}
+#data{
+	display: inline-block;
+	width: 500px;
+	height: 2000px;
+}
+#cardarea{
+	display: inline-block;
+	width: 500px;
+	height: 2000px;
+	vertical-align: top;
+}
+.card{
+	outline: solid;
+	width: 450px;
+	height: 200px;
+}
+#description{
+	width: 400px;
+	height:150px;
+}

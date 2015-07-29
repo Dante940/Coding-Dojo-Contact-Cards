@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Contact Cards</title>
+		<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
+		<link rel='stylesheet' type='text/css' href='style.css'>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				var counter = 0;
+				var store = [];
+				$('#btn').click(function(){
+					var firstname = $('#firstname').val();
+					var lastname = $('#lastname').val();
+					var description = $('#description').val();
+					store[counter] = description;
+					console.log(description, counter)
+					$('#cardarea').append("<div class='card' count="+counter+" a='<h2>"+firstname+" "+lastname+"</h2>' c='<h3>Click for descriptions</h3>' d='"+description+"'><h2>"+firstname+" "+lastname+"</h2><h3>Click for description</h3></div>");
+					counter += 1;
+				});
+				$(document).on('click','h3',function(){
+					var entry = $(this).parent().attr('count');
+					var out = store[entry];
+					$(this).parent().html("<h4>"+out+"</h4><h4>Click here to go back</h4>");
+				});
+				$(document).on('click','h4',function(){
+					var rep = $(this).parent().attr('count');
+					console.log($(this).parent().attr('a')+$(this).parent().attr('b')+$(this).parent().attr('c'));
+					$(this).parent().html($(this).parent().attr('a')+$(this).parent().attr('c'));
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div id='header'>
+			<h1>Contacts</h1>
+			<h3>Enter contact info and submit to create a new contact card</h3>
+		</div>
+		<div id='data'>
+			<form method='post' id='form'>
+				First Name:<input id='firstname' type='text' name='first_name' value='Will'>
+				<br>
+				Last Name:<input id='lastname' type='text' name='last_name' value='Smith'>
+				<br>
+				Description:
+				<br>
+				<textarea id='description' type='text' name='description'>Actor superstar</textarea>
+			</form>
+			<button id='btn'>Add user</button>
+		</div>
+		<div id='cardarea'>
+		</div>
+	</body>
+</html>
